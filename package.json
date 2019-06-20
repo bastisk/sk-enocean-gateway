@@ -13,7 +13,7 @@
     "express": "^4.17.1",
     "jade": "~1.11.0",
     "jwt-simple": "^0.5.6",
-    "mongoose": "^4.4.5",
+    "mongoose": "^5.6.0",
     "morgan": "^1.9.1",
     "node-enocean-utils": "git+https://github.com/bastisk/node-enocean-utils.git",
     "serve-favicon": "^2.5.0",
