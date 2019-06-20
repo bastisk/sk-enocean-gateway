@@ -18,6 +18,12 @@ function initEnocean(){
     });
 }
 
+enocean.teach({
+  "id": "00000580E016",
+  "eep":"A15-14-05",
+  "name":"Shiter 1"
+})
+
 // Start the monitoring on Enocean Pi
 enocean.startMonitor({
     'path':'/dev/ttyAMA0'
@@ -39,7 +45,7 @@ enocean.startMonitor({
     enocean.on('data-unknown', (telegram) => {
      let message = telegram['message']; 
      console.log("found shit." + message.device.id);
-     if(message.device.id == '00000580E250'){
+     if(message.device.id == '00000580E050'){
 	var buf = telegram['message']['data_dl_buffer'];
 
         var supplyVoltageBuf = buf.readUInt8(0);
