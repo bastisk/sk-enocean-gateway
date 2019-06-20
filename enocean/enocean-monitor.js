@@ -20,7 +20,7 @@ function initEnocean(){
 
 enocean.teach({
   "id": "00000580E016",
-  "eep":"A15-14-05",
+  "eep":"A5-14-05",
   "name":"Shiter 1"
 })
 
