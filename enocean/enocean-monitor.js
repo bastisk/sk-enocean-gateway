@@ -1,7 +1,9 @@
 var enocean = require('node-enocean-utils');
 var Devices = require('../models/device');
-//var socket = require('socket.io-client')('http://localhost:3000');
-//socket.on('connect', function(){console.log("Socket.IO client connected... ")});
+var socket = require('socket.io-client')('http://localhost:3000');
+var mqtt = require('mqtt');
+
+socket.on('connect', function(){console.log("Socket.IO client connected... ")});
 
 // init the tool with all already existing devices from db.
 function initEnocean(){

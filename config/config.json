@@ -1,0 +1,13 @@
+{
+  "development": {
+    "dialect": "sqlite",
+    "storage": "./db.development.sqlite"
+  },
+  "production": {
+    "username": "timetracker-dev",
+    "password": "8fqEiuE5muBvKSSY!",
+    "database": "timetracker-dev",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}

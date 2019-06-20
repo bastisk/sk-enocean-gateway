@@ -1,56 +1,47 @@
 var express = require('express');
-var Device = require('../models/device');
-var jwtf = require('../conf/jwt');
+var models = require('../models');
 var router = express.Router();
 
 // GET all Devices
-router.get('/', jwtf.auth, function (req, res, next) {
-    Device.find(function (err, devices) {
+router.get('/', function (req, res, next) {
+    models.Device.findAll().then(devices => {
         res.send(devices);
     });
 });
 
 // GET single Devices
-router.get('/:id', jwtf.auth, function (req, res, next) {
-    Device.findbyId(req.params.id, function (err, devices) {
+router.get('/:id', function (req, res, next) {
+    models.Device.findOne({id: req.params.id}).then(devices => {
         res.send(devices);
     });
 });
 
 // Create new Device
-router.post('/', jwtf.auth, function (req, res, next) {
-    var new_device = new Device({ id: req.body.id, eep: req.body.eep, name: req.body.name, manufacturer: req.body.manufacturer });
-    new_device.save(function (err) {
-        console.log(err);
-    });
-    res.send(new_device);
+router.post('/',  function (req, res, next) {
+    var new_device = { deviceId: req.body.deviceId, eep: req.body.eep, name: req.body.name, manufacturer: req.body.manufacturer };
+    models.Device.create(new_device).then(entry => {
+        res.send(entry);
+      });
 });
 
 // Delete Device
-router.delete('/:id', jwtf.auth, function (req, res, next) {
-    Device.remove({ _id: req.params.id }, function (err) {
-        console.log(err);
-        res.send("k");
-    });
+router.delete('/:id', function (req, res, next) {
+    models.Device.destroy({ where: {id: req.params.id}});
+    res.send(204);
 });
 
 // Update Device
-router.put('/:id', jwtf.auth, function (req, res, next) {
-    Device.findbyId(req.params.id, function (err, device) {
-        if (err) {
-            console.log(err);
-            res.send(err);
-        }
+router.put('/:id',  function (req, res, next) {
+    models.Device.findOne({id: req.params.id}).then(device => {
         if (device) {
             device.name = req.body.name;
             device.eep = req.body.eep;
-            device.id = req.body.id;
+            device.deviceId = req.body.deviceId;
             device.manufacturer = req.body.manufacturer;
         }
-        device.save(function (err) {
-            if (err) {
-                console.log(err);
-                res.send(err);
+        models.Device.update(device,  {where: { id: device.id}}).then(result => {
+            if (result) {
+                res.send(result);
             }
         });
     });

@@ -4,18 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
 var swaggerUi = require('swagger-ui-express');
 var swaggerDocument = require('./swagger.json');
-var enocean = require('./enocean/enocean-monitor');
+//var enocean = require('./enocean/enocean-monitor');
 
-var dbConfig = require('./conf/mongodb');
 var routes = require('./routes/index');
 var devices = require('./routes/devices');
 var messages = require('./routes/messages');
 
-// Connect to DB
-mongoose.connect(dbConfig.url, {useNewUrlParser: true});
 
 var app = express();
 
