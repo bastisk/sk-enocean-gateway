@@ -1,0 +1,16 @@
+{
+  "name": "enocean-monitor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sebastian Kiepsch",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.1.0",
+    "mqtt": "^3.0.0",
+    "node-enocean-utils": "git+https://github.com/bastisk/node-enocean-utils.git"
+  }
+}
