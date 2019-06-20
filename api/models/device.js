@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
         deviceId: DataTypes.STRING,
         eep: DataTypes.STRING,
         manufacturer: DataTypes.STRING,
-        name: DataTypes.DATE
+        name: DataTypes.STRING
       });
 
     return Device;

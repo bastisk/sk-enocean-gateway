@@ -306,6 +306,9 @@
         "id": {
           "type": "string"
         },
+        "deviceId": {
+          "type": "string"
+        },
         "eep": {
           "type": "string"
         },

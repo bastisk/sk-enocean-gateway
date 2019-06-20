@@ -1,0 +1,28 @@
+{
+    "apps": [
+        {
+            "name": "sk-enocean-monitor",
+            "script": "./enocean-monitor/index.js",
+            "watch": true,
+            "env": {
+                "NODE_ENV": "development"
+            }
+        },
+        {
+            "name": "sk-enocean-api",
+            "script": "./api/bin/www",
+            "watch": true,
+            "env": {
+                "NODE_ENV": "development"
+            }
+        },
+        {
+            "name": "sk-enocean-dbwriter",
+            "script": "./dbwriter/index.js",
+            "watch": true,
+            "env": {
+                "NODE_ENV": "development"
+            }
+        }
+    ]
+}

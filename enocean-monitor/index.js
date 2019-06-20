@@ -38,6 +38,7 @@ mqttclient.on('message', (topic, message) => {
     if(topic == 'teach-in'){
         try {
             enocean.teach(message);
+            console.log('Teach In successful message: ' + message);
         } catch(e) {
             console.log('Failed to teach in message: ' + message);
         }   
