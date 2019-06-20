@@ -15,7 +15,7 @@ var devices = require('./routes/devices');
 var messages = require('./routes/messages');
 
 // Connect to DB
-mongoose.connect(dbConfig.url);
+mongoose.connect(dbConfig.url, {useNewUrlParser: true});
 
 var app = express();
 
