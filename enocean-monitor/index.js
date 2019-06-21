@@ -10,7 +10,14 @@ var mqttclient = mqtt.connect(config.get('mqtt'));
 // Get existing devices and teach em
 
 request.get(config.get('apiUrl') + '/api/devices', (err, resp, body) => {
-    console.log(body);
+    let parsed = JSON.parse(body);
+    parsed.forEach(device => {
+        enocean.teach({
+            "id": device.deviceId,
+            "eep": device.eep,
+            "name": device.name
+        });
+    });
 });
 
 // Start the monitoring on Enocean Pi
