@@ -14,15 +14,17 @@ enocean.startMonitor({
     console.log(JSON.stringify(gateway, null, '  '));
 
     enocean.on('data-known', (telegram) => {
-        mqttclient.publish('data-known', telegram);
+        mqttclient.publish('data-known', JSON.stringify(telegram));
     });
 
     enocean.on('data-learn', (telegram) => {
-        mqttclient.publish('data-learn', telegram);
+        mqttclient.publish('data-learn', JSON.stringify(telegram));
     });
 
     enocean.on('data-unknown', (telegram) => {
-        mqttclient.publish('data-unknown', telegram);
+        
+        mqttclient.publish('data-unknown', JSON.stringify(telegram), (err) => {
+	});
     });
 
 }).catch((error) => {
@@ -31,7 +33,8 @@ enocean.startMonitor({
 
 // Start the Monitoring on MQTT
 mqttclient.on('connect', () => {
-    mqttclient.subscribe('teach-in', (err) => {})
+ 	console.log("connected to mqtt..");  
+  mqttclient.subscribe('teach-in', (err) => {})
 });
 
 mqttclient.on('message', (topic, message) => {

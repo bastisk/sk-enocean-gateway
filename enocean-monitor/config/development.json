@@ -1,4 +1,4 @@
 {
     "mqtt":"mqtt://localhost",
-    "usbPath":"/dev/ttyAMA0"
+    "usbpath":"/dev/ttyAMA0"
 }

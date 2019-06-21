@@ -2,7 +2,7 @@
     "apps": [
         {
             "name": "sk-enocean-monitor",
-            "script": "./enocean-monitor/index.js",
+            "script": "/home/basti/sk-enocean-gateway/enocean-monitor/index.js",
             "watch": true,
             "env": {
                 "NODE_ENV": "development"
