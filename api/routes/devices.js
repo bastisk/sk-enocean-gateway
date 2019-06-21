@@ -1,7 +1,7 @@
 var express = require('express');
 var models = require('../models');
 var mqtt = require('mqtt');
-//var mqttclient = mqtt.connect('mqtt://localhost');
+var mqttclient = mqtt.connect('mqtt://localhost');
 var router = express.Router();
 
 // GET all Devices
@@ -22,7 +22,7 @@ router.get('/:id', function (req, res, next) {
 router.post('/',  function (req, res, next) {
     var new_device = { deviceId: req.body.deviceId, eep: req.body.eep, name: req.body.name, manufacturer: req.body.manufacturer };
     models.Device.create(new_device).then(entry => {
-        //mqttclient.publish('teach-in', {eep: new_device.eep, deviceId: new_device.deviceId, name: new_device.name});
+        mqttclient.publish('teach-in', JSON.stringify({eep: new_device.eep, deviceId: new_device.deviceId, name: new_device.name}));
         res.send(entry);
       });
 });
