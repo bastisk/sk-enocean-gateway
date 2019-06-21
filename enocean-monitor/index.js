@@ -12,6 +12,7 @@ var mqttclient = mqtt.connect(config.get('mqtt'));
 request.get(config.get('apiUrl') + '/api/devices', (err, resp, body) => {
     let parsed = JSON.parse(body);
     parsed.forEach(device => {
+	console.log(device);
         enocean.teach({
             "id": device.deviceId,
             "eep": device.eep,
