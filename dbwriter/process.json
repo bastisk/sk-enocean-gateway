@@ -1,7 +1,7 @@
 {
     "apps": [
         {
-            "name": "sk-enocean-monitor",
+            "name": "sk-enocean-dbwriter",
             "script": "./index.js",
             "watch": true,
             "env": {

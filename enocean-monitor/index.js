@@ -2,9 +2,16 @@
  * Forwards all messages from Enocean into a local MQTT broker.
  */
 var enocean = require('node-enocean-utils');
+var request = require('request');
 var mqtt = require('mqtt');
 var config = require('config');
 var mqttclient = mqtt.connect(config.get('mqtt'));
+
+// Get existing devices and teach em
+
+request.get(config.get('apiUrl') + '/api/devices', (err, resp, body) => {
+    console.log(body);
+});
 
 // Start the monitoring on Enocean Pi
 enocean.startMonitor({

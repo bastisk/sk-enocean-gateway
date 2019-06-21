@@ -1,4 +1,5 @@
 {
     "mqtt":"mqtt://localhost",
-    "usbpath":"/dev/ttyAMA0"
+    "usbpath":"/dev/ttyAMA0",
+    "apiUrl":"http://localhost:3000"
 }
