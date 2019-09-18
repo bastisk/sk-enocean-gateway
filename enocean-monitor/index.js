@@ -6,13 +6,14 @@ var request = require('request');
 var mqtt = require('mqtt');
 var config = require('config');
 var mqttclient = mqtt.connect(config.get('mqtt'));
-
+var cTable = require('console.table');
 // Get existing devices and teach em
 
 request.get(config.get('apiUrl') + '/api/devices', (err, resp, body) => {
     let parsed = JSON.parse(body);
+    console.log('Connected to API, found ' + parsed.length + ' devices to learn in!');
+    console.table(parsed);
     parsed.forEach(device => {
-	console.log(device);
         enocean.teach({
             "id": device.deviceId,
             "eep": device.eep,
@@ -48,7 +49,7 @@ enocean.startMonitor({
 
 // Start the Monitoring on MQTT
 mqttclient.on('connect', () => {
- 	console.log("connected to mqtt..");  
+  console.log("Connected to MQTT Broker..");  
   mqttclient.subscribe('teach-in', (err) => {})
 });
 
