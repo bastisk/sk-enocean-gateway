@@ -56,8 +56,9 @@ mqttclient.on('connect', () => {
 mqttclient.on('message', (topic, message) => {
     if(topic == 'teach-in'){
         try {
+            console.log(message);
             let parsed = JSON.parse(message);
-            let msg = JSON.stringify({eep: parsed.eep, id: parsed.deviceId, name: parsed.name});
+            let msg = {"eep": parsed.eep, "id": parsed.deviceId, "name": parsed.name};
             enocean.teach(msg);
             console.log('Teach In successful message: ' + msg);
         } catch(e) {
