@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swaggerUi = require('swagger-ui-express');
 var swaggerDocument = require('./swagger.json');
+var cors = require('cors');
 //var enocean = require('./enocean/enocean-monitor');
 
 var routes = require('./routes/index');
@@ -27,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
+app.use(cors());
 app.use('/', routes);
 app.use('/api/devices', devices);
 app.use('/api/messages', messages);

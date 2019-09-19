@@ -30,7 +30,7 @@ router.post('/',  function (req, res, next) {
 // Delete Device
 router.delete('/:id', function (req, res, next) {
     models.Device.destroy({ where: {id: req.params.id}});
-    res.send(204);
+    res.send({});
 });
 
 // Update Device
