@@ -13,4 +13,8 @@ export class DeviceService {
     public getDevices(): Promise<Device[]> {
             return this.http.get<Device[]>(this.baseUrl + '/api/devices').toPromise();
     }
+
+    public deleteDevice(id: string): Promise<boolean> {
+        return this.http.delete<boolean>(this.baseUrl + '/api/devices/' + id).toPromise();
+    }
 }
