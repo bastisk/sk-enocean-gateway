@@ -1,1 +1,30 @@
-<p>home works!</p>
+<div class="container">
+    <h1 class="title">Devices</h1>
+    <p>Manage all Enocean devices for this gateway using this page.</p>
+    <table class="table" width="100%">
+        <thead>
+            <tr>
+            <th>DeviceId</th>
+            <th>EEP</th>
+            <th>Name</th>
+            <th>Manufacturer</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th></th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let device of devices">
+                <td>{{device.deviceId}}</td>
+                <td>{{device.eep}}</td>
+                <td>{{device.name}}</td>
+                <td>{{device.manufacturer}}</td>
+                <td>{{device.createdAt  |  date: 'dd.MM.yyyy hh:mm'}}</td>
+                <td>{{device.updatedAt  | date: 'dd.MM.yyyy hh:mm'}}</td>
+                <td><button class="button is-danger is-small" (click)="deleteDevice(device)">Forget</button></td>
+                <td><button class="button is-info is-small" (click)="deleteDevice(device)">Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
